@@ -200,3 +200,22 @@ Logistic Regression  0.761221   0.773519 0.765517 0.769497 0.845150           0.
 
 Modelo seleccionado: Extra Trees
 ```
+
+
+
+1. Si el equipo comercial solo puede gestionar 100 clientes al día, ¿cómo utilizarías las probabilidades para priorizar los contactos?
+Las probabilidades permitirían mejorar la priorización de los contactos mediante la creación de un modelo de perfilamiento, con el objetivo de invertir más tiempo en aquellos leads que presentan una mayor probabilidad de compra. Sin embargo, el modelo desarrollado todavía no cuenta con esta capacidad. Aunque es posible identificar algunas variables relevantes, estas aún no son lo suficientemente contundentes para realizar dicha afirmación.
+
+2. ¿Qué diferencia existe entre predecir una compra y demostrar que una gestión comercial causó esa compra?
+La predicción es una inferencia basada en patrones y relaciones identificadas en los datos. Sin embargo, demostrar causalidad requiere un estudio de mayor profundidad que permita comprender cómo la gestión comercial influyó directamente en la conversión de una oportunidad en una compra.
+
+3. ¿Qué riesgos de sesgo o calidad podrían afectar las predicciones?
+Todos los modelos deben pasar por dos fases fundamentales: la validación en el mundo real y el ajuste posterior. Podemos desarrollar y optimizar un modelo, pero esto no garantiza que estemos solucionando el problema de negocio. Los riesgos de sesgo y calidad de los datos son considerables, especialmente en esta primera fase, que puede entenderse como exploratoria.
+
+4. ¿Qué indicadores propondrías para medir el valor del modelo una vez implementado?
+Se pueden establecer indicadores clave de desempeño (KPIs), como el incremento en la tasa de conversión de los contactos comerciales. Para validar estos resultados, sería recomendable implementar una prueba A/B que permita determinar si el uso del modelo realmente genera valor para la organización.
+
+5. ¿Cómo detectarías que el modelo está perdiendo desempeño y cuándo considerarías reentrenarlo?
+Podríamos monitorear las métricas de evaluación de los modelos, como F1, F2 y F3, para identificar posibles disminuciones en su desempeño. Sin embargo, más allá de la evaluación de las métricas, buscaría comprender los nuevos escenarios que justificarían un reentrenamiento, considerando que cada caso puede presentar diferencias significativas según las características de las muestras.
+
+Para ello, sería importante establecer entornos de experimentación independientes que permitan evaluar diferentes escenarios y garantizar la mayor diversidad posible en los datos, con el propósito de reducir los sesgos y mejorar la capacidad de generalización del modelo.
