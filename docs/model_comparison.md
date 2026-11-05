@@ -100,9 +100,10 @@ Genera `resultados_validacion.csv` y `resultados_finales.csv` en el directorio
 actual. Para otra ubicación, agrega `--output-dir reports/entrenamiento`.
 Lee por defecto `src/notebook/data/bronce/df_bronce.csv`, la ubicación existente
 en este proyecto. Para otro archivo, agrega `--data ruta/dataset.csv`.
-Esta entrada guarda las métricas y muestra el modelo seleccionado; no exporta
-el modelo ni habilita clasificación en la API. El orden del reporte final no
-cambia el ganador seleccionado en validación.
+Esta entrada guarda las métricas y exporta el pipeline seleccionado a
+`deployment/model/model.joblib`, listo para la API de oportunidades. Puedes cambiar
+el destino con `--model-output` y la versión con `--model-version`.
+El orden del reporte final no cambia el ganador seleccionado en validación.
 
 La carga del CSV es explícita con `load_dataset`; importar el módulo no lee datos
 ni ejecuta entrenamiento. `prepare_dataset` devuelve `X` con categóricas y

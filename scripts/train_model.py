@@ -3,6 +3,7 @@
 import argparse
 from pathlib import Path
 
+import joblib
 import pandas as pd
 
 from amarilo.modeling.classification import evaluate_final, split_data, validate_models
@@ -13,6 +14,8 @@ def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, default=DEFAULT_DATASET)
     parser.add_argument("--output-dir", type=Path, default=Path("."))
+    parser.add_argument("--model-output", type=Path, default=Path("deployment/model/model.joblib"))
+    parser.add_argument("--model-version", default="classification-0.1.0")
     args = parser.parse_args(argv)
     if not args.data.is_file():
         parser.error(f"No existe el dataset: {args.data}. Indica la ruta con --data.")
@@ -51,7 +54,18 @@ def main(argv: list[str] | None = None) -> None:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     resultados_validacion.to_csv(args.output_dir / "resultados_validacion.csv", index=False)
     resultados_finales.to_csv(args.output_dir / "resultados_finales.csv", index=False)
+    args.model_output.parent.mkdir(parents=True, exist_ok=True)
+    joblib.dump(
+        {
+            "pipeline": final.best_pipeline,
+            "feature_names": list(X.columns),
+            "model_version": args.model_version,
+            "model_name": final.best_model_name,
+        },
+        args.model_output,
+    )
     print(f"\nMétricas guardadas en: {args.output_dir.resolve()}")
+    print(f"Modelo seleccionado guardado en: {args.model_output.resolve()}")
     print("\nEntrenamiento finalizado correctamente.")
 
 

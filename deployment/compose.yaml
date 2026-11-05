@@ -5,3 +5,12 @@ services:
       dockerfile: deployment/api/Dockerfile
     ports:
       - "8000:8000"
+    environment:
+      MODEL_PATH: /app/deployment/model/model.joblib
+    volumes:
+      - type: bind
+        source: ./model
+        target: /app/deployment/model
+        read_only: true
+        bind:
+          create_host_path: false

@@ -59,9 +59,9 @@ poetry run python scripts/train_demo.py
 poetry run uvicorn amarilo.infrastructure.bootstrap:create_app --factory --reload
 ```
 
-`analytics` es opcional e incluye pandas, ipykernel y openpyxl para los notebooks
+`analytics` es opcional e incluye ipykernel y openpyxl para los notebooks
 y los archivos Excel existentes. Para trabajar solo en la API: `poetry install`.
-La dependencia de pandas existente se conserva en ese grupo. Los notebooks pueden
+pandas se instala también en producción para el preprocesamiento de inferencia. Los notebooks pueden
 seguir usando las rutas originales; no se movieron los datos.
 
 La API está en http://localhost:8000 y Swagger en http://localhost:8000/docs.
@@ -93,10 +93,10 @@ MODEL_PATH=/ruta/model.joblib poetry run uvicorn amarilo.infrastructure.bootstra
 
 ## Docker
 
-Para probar el arranque del despliegue, usa el proyecto
+Para desplegar el clasificador con el body de oportunidad, usa el proyecto
 [deployment](deployment/README.md), con entrada FastAPI en `deployment/api/main.py`
-y únicamente `GET /health` habilitado. Por ahora no carga modelos ni requiere
-artefactos; la clasificación se conectará cuando se definan las variables del body.
+y `POST /v1/classify`, `GET /health` y Swagger. Coloca el pipeline entrenado en
+`deployment/model/model.joblib`; `scripts/train_model.py` exporta allí el ganador.
 
 Primero genera el ejemplo anterior o coloca tu artefacto real en
 `models/model.joblib`. Después:
@@ -127,7 +127,8 @@ poetry run python scripts/train_model.py
 ```
 
 Selecciona por `average_precision` y guarda `resultados_validacion.csv` y
-`resultados_finales.csv`. Usa `--data` para indicar la ubicación real del CSV.
+`resultados_finales.csv`, y el pipeline ganador en `deployment/model/model.joblib`.
+Usa `--data` para indicar la ubicación real del CSV.
 
 El módulo offline `amarilo.modeling.classification` compara 11 clasificadores
 con particiones 64/16/20, selecciona en validación y evalúa en el test reservado.

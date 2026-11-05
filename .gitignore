@@ -22,3 +22,5 @@ models/*
 reports/
 resultados_validacion.csv
 resultados_finales.csv
+deployment/model/*
+!deployment/model/README.md

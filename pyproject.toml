@@ -13,7 +13,8 @@ dependencies = [
     "uvicorn (>=0.34,<1.0)",
     "scikit-learn (>=1.6,<2.0)",
     "joblib (>=1.4,<2.0)",
-    "numpy (>=2.2,<3.0)"
+    "numpy (>=2.2,<3.0)",
+    "pandas (>=3.1.1,<4.0.0)"
 ]
 
 [tool.poetry]
@@ -23,7 +24,6 @@ packages = [{ include = "amarilo", from = "src" }]
 optional = true
 
 [tool.poetry.group.analytics.dependencies]
-pandas = ">=3.1.1,<4.0.0"
 ipykernel = ">=6.29,<8.0"
 openpyxl = ">=3.1,<4.0"
 

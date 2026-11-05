@@ -647,7 +647,7 @@ version = "2.5.4"
 description = "Fundamental package for array computing in Python"
 optional = false
 python-versions = ">=3.12"
-groups = ["main", "analytics"]
+groups = ["main"]
 files = [
     {file = "numpy-2.5.4-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:c6342f54c67093cae5c0227eb0eb772fdb79f2a2c37a6eb278b9909ee06aa356"},
     {file = "numpy-2.5.4-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:b11e8fda06a7d69f15ebf542660b74466c2e51094800c1fb794f47ad4faeef17"},
@@ -765,7 +765,7 @@ version = "3.1.1"
 description = "Powerful data structures for data analysis, time series, and statistics"
 optional = false
 python-versions = ">=3.11"
-groups = ["analytics"]
+groups = ["main"]
 files = [
     {file = "pandas-3.1.1-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:e30c12af3911e750b9c073e0bbc6460655753d0121c5d8c4a1d942462d45eee0"},
     {file = "pandas-3.1.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:78837bfc15a272896def947e9b47a671363f5291c5266105c68c06d6a1b0045e"},
@@ -1224,7 +1224,7 @@ version = "4.0.0"
 description = "Extensions to the standard Python datetime module"
 optional = false
 python-versions = ">=3.11"
-groups = ["analytics"]
+groups = ["main", "analytics"]
 files = [
     {file = "python_dateutil-4.0.0-py3-none-any.whl", hash = "sha256:a5e246f79eb80475e691bf93862cead98decd8a498cf53ba0516fcdc0f50dc1c"},
     {file = "python_dateutil-4.0.0.tar.gz", hash = "sha256:d7295ff14fdc0f92f662100bfb6c551d160ca090f2939f1ec5b9794265c03f06"},
@@ -1657,7 +1657,7 @@ version = "2026.6"
 description = "Provider of IANA time zone data"
 optional = false
 python-versions = ">=2"
-groups = ["analytics"]
+groups = ["main", "analytics"]
 files = [
     {file = "tzdata-2026.6-py2.py3-none-any.whl", hash = "sha256:0a10eec6e13ef16b627fabed9a5f2ba61a62b1c67f327305f4e7e412a70b4aec"},
     {file = "tzdata-2026.6.tar.gz", hash = "sha256:85d2cd9c09f81f0bb29db27759fc83af4f1e620efb814f8c5bf8b4cc4feece6d"},
@@ -1724,4 +1724,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13,<3.14"
-content-hash = "a9dff4a9a069c0ad188c111216b74ba5ffa24126e140b472efe388e38b51156d"
+content-hash = "081d1b806ca4f107e8246350fa5d77dd2b78acbe3b8b5085ae161861fe242cb2"

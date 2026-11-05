@@ -1,0 +1,19 @@
+{
+  "ETAPA_DE_VENTA": "Contacto",
+  "FECHA_DE_CREACION_OP": "2026-01-15",
+  "FECHA_ULTIMA_ACTUALIZACION_OP": "2026-01-16",
+  "REFERIDO": "No",
+  "TIPO_DE_PROYECTO": "Vivienda",
+  "METODO_DE_VENTAS": "Directa",
+  "CIUDAD": "Bogotá",
+  "IMPORTE_TOTAL_OP_PRIMERA_VERSION": 250000000.0,
+  "DESTINO": "Vivienda",
+  "TIPO_VENTA": "Directa",
+  "SALA_DE_VENTAS_ALTERNATIVA": "Principal",
+  "ESTADO_PROYECTO": "En ventas",
+  "FECHA_INICIO_VENTAS_TRANSACCIONAL": "2025-01-01",
+  "BK_VENDEDOR": 123,
+  "OBSERVACIONES": "Ejemplo ficticio de prueba",
+  "OCUPACION_COMPRADOR1": "Empleado",
+  "CIUDAD_COMPRADOR1": "Bogotá"
+}

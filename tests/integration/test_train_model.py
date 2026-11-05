@@ -1,6 +1,8 @@
 import numpy as np
 import pytest
 
+from amarilo.adapters.outbound.opportunity_classifier import OpportunityClassifier
+
 pd = pytest.importorskip("pandas", reason="El entrenamiento requiere el grupo analytics")
 
 from amarilo.modeling.dataset_preparin import (  # noqa: E402
@@ -55,7 +57,19 @@ def test_training_entrypoint_runs_all_models_and_writes_both_reports(raw_dataset
     data_path = tmp_path / "dataset.csv"
     raw_dataset.to_csv(data_path, index=False)
     output = tmp_path / "reports"
-    main(["--data", str(data_path), "--output-dir", str(output)])
+    artifact_path = tmp_path / "model.joblib"
+    main(
+        [
+            "--data",
+            str(data_path),
+            "--output-dir",
+            str(output),
+            "--model-output",
+            str(artifact_path),
+        ]
+    )
+    deployed = OpportunityClassifier(artifact_path)
+    assert deployed.classify(raw_dataset.iloc[0].drop("COMPRA").to_dict()) in (0, 1)
     for filename in ["resultados_validacion.csv", "resultados_finales.csv"]:
         metrics = pd.read_csv(output / filename)
         assert len(metrics) == 11
