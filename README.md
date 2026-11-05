@@ -151,3 +151,52 @@ pipeline real, carga única y fallo al arrancar sin modelo.
 
 - [Poetry: instalación y archivo lock](https://python-poetry.org/docs/basic-usage/).
 - [FastAPI: lifespan para cargar recursos al arrancar](https://fastapi.tiangolo.com/advanced/events/).
+
+
+
+```bash
+[1/3] Dividiendo dataset...
+Entrenamiento: (1780, 14)
+Validación: (446, 14)
+Prueba: (557, 14)
+
+[2/3] Entrenando y validando modelos...
+/Users/jonathancamposlozano/Documents/Amarilo/.venv/lib/python3.13/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+
+RESULTADOS DE VALIDACIÓN
+              model  accuracy  precision   recall       f1  roc_auc  average_precision
+        Extra Trees  0.838565   0.830579 0.866379 0.848101 0.911628           0.916804
+      Random Forest  0.822870   0.802372 0.875000 0.837113 0.910631           0.906927
+  Gradient Boosting  0.784753   0.793103 0.793103 0.793103 0.864426           0.870812
+                SVM  0.771300   0.762097 0.814655 0.787500 0.859219           0.868647
+   Ridge Classifier  0.775785   0.789474 0.775862 0.782609 0.851001           0.857385
+Logistic Regression  0.784753   0.798246 0.784483 0.791304 0.852310           0.856725
+     SGD Classifier  0.780269   0.810185 0.754310 0.781250 0.849511           0.847341
+           AdaBoost  0.730942   0.739316 0.745690 0.742489 0.822017           0.818815
+                KNN  0.744395   0.743802 0.775862 0.759494 0.816931           0.775211
+      Decision Tree  0.784753   0.798246 0.784483 0.791304 0.788290           0.742279
+        Naive Bayes  0.594170   0.567639 0.922414 0.702791 0.744320           0.705748
+
+Mejor modelo: Extra Trees
+
+[3/3] Evaluando modelos en holdout...
+/Users/jonathancamposlozano/Documents/Amarilo/.venv/lib/python3.13/site-packages/sklearn/svm/_base.py:236: FutureWarning: The `probability` parameter was deprecated in 1.9 and will be removed in version 1.11. Use `CalibratedClassifierCV(SVC(), ensemble=False)` instead of `SVC(probability=True)`
+  warnings.warn(
+
+RESULTADOS FINALES
+              model  accuracy  precision   recall       f1  roc_auc  average_precision
+      Random Forest  0.842011   0.821656 0.889655 0.854305 0.926508           0.935369
+        Extra Trees  0.840215   0.813084 0.900000 0.854337 0.920083           0.928459
+  Gradient Boosting  0.779174   0.783051 0.796552 0.789744 0.865840           0.863996
+                SVM  0.788151   0.779221 0.827586 0.802676 0.862198           0.854170
+Logistic Regression  0.761221   0.773519 0.765517 0.769497 0.845150           0.845593
+   Ridge Classifier  0.748654   0.758621 0.758621 0.758621 0.838486           0.842488
+           AdaBoost  0.755835   0.758389 0.779310 0.768707 0.827289           0.828392
+     SGD Classifier  0.707361   0.850829 0.531034 0.653928 0.823763           0.821720
+                KNN  0.734291   0.738255 0.758621 0.748299 0.823770           0.790054
+      Decision Tree  0.804309   0.787302 0.855172 0.819835 0.806335           0.753066
+        Naive Bayes  0.592460   0.568330 0.903448 0.697736 0.708266           0.680340
+
+Modelo seleccionado: Extra Trees
+```

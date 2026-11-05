@@ -1,10 +1,13 @@
 services:
   classification:
+    image: amarilo-classification:local
+    init: true
+    restart: unless-stopped
     build:
       context: ..
       dockerfile: deployment/api/Dockerfile
     ports:
-      - "8000:8000"
+      - "${API_PORT:-8000}:8000"
     environment:
       MODEL_PATH: /app/deployment/model/model.joblib
     volumes:

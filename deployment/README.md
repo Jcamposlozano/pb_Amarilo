@@ -67,7 +67,29 @@ que en entrenamiento. El modelo no se incluye en Git ni en la imagen.
 Con Docker iniciado y la carpeta `deployment/model` existente:
 
 ```bash
-docker compose -f deployment/compose.yaml up --build
+docker compose -f deployment/compose.yaml up --build -d
+```
+
+Swagger: http://localhost:8000/docs. Si tu API local ya ocupa el puerto 8000:
+
+```bash
+API_PORT=8001 docker compose -f deployment/compose.yaml up --build -d
+```
+
+En ese caso usa http://localhost:8001/docs y http://localhost:8001/health.
+La imagen se llama `amarilo-classification:local`. Para revisar y detener:
+
+```bash
+docker compose -f deployment/compose.yaml logs -f classification
+docker compose -f deployment/compose.yaml ps
+docker compose -f deployment/compose.yaml down
+```
+
+Cuando cambies el código, vuelve a construir con `up --build -d`. Cuando sustituyas
+solo `deployment/model/model.joblib`, recarga el modelo reiniciando el servicio:
+
+```bash
+docker compose -f deployment/compose.yaml restart classification
 ```
 
 Compose monta esa carpeta en lectura. Poetry instala pandas en producción porque
