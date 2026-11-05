@@ -93,6 +93,11 @@ MODEL_PATH=/ruta/model.joblib poetry run uvicorn amarilo.infrastructure.bootstra
 
 ## Docker
 
+Para probar el arranque del despliegue, usa el proyecto
+[deployment](deployment/README.md), con entrada FastAPI en `deployment/api/main.py`
+y únicamente `GET /health` habilitado. Por ahora no carga modelos ni requiere
+artefactos; la clasificación se conectará cuando se definan las variables del body.
+
 Primero genera el ejemplo anterior o coloca tu artefacto real en
 `models/model.joblib`. Después:
 
@@ -114,6 +119,16 @@ despliegue y deben configurarse antes de exponerlo públicamente.
 
 ## Comparación de modelos
 
+Para ejecutar el entrenamiento con la preparación de datos de Amarilo:
+
+```bash
+poetry install --with analytics
+poetry run python scripts/train_model.py
+```
+
+Selecciona por `average_precision` y guarda `resultados_validacion.csv` y
+`resultados_finales.csv`. Usa `--data` para indicar la ubicación real del CSV.
+
 El módulo offline `amarilo.modeling.classification` compara 11 clasificadores
 con particiones 64/16/20, selecciona en validación y evalúa en el test reservado.
 Exporta solo el ganador seleccionado. Consulta los ejemplos de notebook y CLI en
@@ -123,8 +138,8 @@ Exporta solo el ganador seleccionado. Consulta los ejemplos de notebook y CLI en
 
 ```bash
 poetry check --lock
-poetry run ruff check src/amarilo src/main.py scripts tests
-poetry run ruff format --check src/amarilo src/main.py scripts tests
+poetry run ruff check src/amarilo src/main.py scripts tests deployment
+poetry run ruff format --check src/amarilo src/main.py scripts tests deployment
 poetry run pytest
 ```
 

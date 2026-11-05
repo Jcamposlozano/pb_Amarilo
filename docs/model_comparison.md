@@ -85,6 +85,33 @@ de forma independiente con un modelo ya entrenado.
 
 ## Ejecución desde CSV
 
+### Entrenamiento con la preparación de Amarilo
+
+El script `scripts/train_model.py` integra la preparación de categóricas, importe
+y fechas de `amarilo.modeling.dataset_preparin`. Selecciona el ganador mediante
+`average_precision` en validación, reajusta en el 80% y evalúa en el 20% reservado.
+
+```bash
+poetry install --with analytics
+poetry run python scripts/train_model.py
+```
+
+Genera `resultados_validacion.csv` y `resultados_finales.csv` en el directorio
+actual. Para otra ubicación, agrega `--output-dir reports/entrenamiento`.
+Lee por defecto `src/notebook/data/bronce/df_bronce.csv`, la ubicación existente
+en este proyecto. Para otro archivo, agrega `--data ruta/dataset.csv`.
+Esta entrada guarda las métricas y muestra el modelo seleccionado; no exporta
+el modelo ni habilita clasificación en la API. El orden del reporte final no
+cambia el ganador seleccionado en validación.
+
+La carga del CSV es explícita con `load_dataset`; importar el módulo no lee datos
+ni ejecuta entrenamiento. `prepare_dataset` devuelve `X` con categóricas y
+variables numéricas derivadas, e `y`. El One-Hot Encoding, la imputación y el
+escalado se ajustan dentro del pipeline de cada candidato, después de dividir.
+El módulo limita las entradas a las columnas declaradas en `columnas_modelo`.
+
+### Comparación con un CSV numérico genérico
+
 ```bash
 poetry run python scripts/compare_models.py \
   --csv ruta/dataset.csv \

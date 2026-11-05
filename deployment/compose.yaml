@@ -1,0 +1,7 @@
+services:
+  classification:
+    build:
+      context: ..
+      dockerfile: deployment/api/Dockerfile
+    ports:
+      - "8000:8000"

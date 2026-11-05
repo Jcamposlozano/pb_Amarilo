@@ -6,6 +6,12 @@
 src/*
 !src/amarilo/
 !src/amarilo/**
+!deployment/
+deployment/*
+!deployment/__init__.py
+!deployment/api/
+deployment/api/*
+!deployment/api/*.py
 **/__pycache__/
 **/*.pyc
 **/.DS_Store
