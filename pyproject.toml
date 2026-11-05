@@ -1,0 +1,47 @@
+[project]
+name = "amarilo"
+version = "0.1.0"
+description = "Servicio de inferencia de un modelo de machine learning con arquitectura hexagonal"
+readme = "README.md"
+authors = [
+    {name = "Jonathan Campos Lozano",email = "jc222209@gmail.com"}
+]
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "fastapi (>=0.115,<1.0)",
+    "pydantic (>=2.10,<3.0)",
+    "uvicorn (>=0.34,<1.0)",
+    "scikit-learn (>=1.6,<2.0)",
+    "joblib (>=1.4,<2.0)",
+    "numpy (>=2.2,<3.0)"
+]
+
+[tool.poetry]
+packages = [{ include = "amarilo", from = "src" }]
+
+[tool.poetry.group.analytics]
+optional = true
+
+[tool.poetry.group.analytics.dependencies]
+pandas = ">=3.1.1,<4.0.0"
+ipykernel = ">=6.29,<8.0"
+openpyxl = ">=3.1,<4.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.3,<10.0"
+httpx = ">=0.28,<1.0"
+ruff = ">=0.11,<1.0"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

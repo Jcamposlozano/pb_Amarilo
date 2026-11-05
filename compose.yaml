@@ -1,0 +1,14 @@
+services:
+  inference:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: /app/models/model.joblib
+    volumes:
+      - type: bind
+        source: ./models/model.joblib
+        target: /app/models/model.joblib
+        read_only: true
+        bind:
+          create_host_path: false

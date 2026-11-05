@@ -1,0 +1,11 @@
+*
+!pyproject.toml
+!poetry.lock
+!README.md
+!src/
+src/*
+!src/amarilo/
+!src/amarilo/**
+**/__pycache__/
+**/*.pyc
+**/.DS_Store
